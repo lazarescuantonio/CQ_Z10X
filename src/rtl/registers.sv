@@ -92,19 +92,19 @@ module registers(
             default              select_reg = `NO_OF_REGS'b0000_0000_0000_0000;
         endcase
     
-    assign select_pb_lut0    = select_reg[ 0];   
-    assign select_pb_lut1    = select_reg[ 1];   
-    assign select_pb_lut2    = select_reg[ 2];    
-    assign select_pb_lut3   = select_reg[ 3];   
-    assign select_pb_lut4    = select_reg[ 4];   
-    assign select_pb_lut5    = select_reg[ 5];   
-    assign select_pb_lut6     = select_reg[ 6];   
-    assign select_pb_lut7     = select_reg[ 7];   
-    assign select_pb_lut8    = select_reg[ 8];   
-    assign select_pb_lut9   = select_reg[ 9];   
+    assign select_pb_lut0  = select_reg[ 0];   
+    assign select_pb_lut1  = select_reg[ 1];   
+    assign select_pb_lut2  = select_reg[ 2];    
+    assign select_pb_lut3  = select_reg[ 3];   
+    assign select_pb_lut4  = select_reg[ 4];   
+    assign select_pb_lut5  = select_reg[ 5];   
+    assign select_pb_lut6  = select_reg[ 6];   
+    assign select_pb_lut7  = select_reg[ 7];   
+    assign select_pb_lut8  = select_reg[ 8];   
+    assign select_pb_lut9  = select_reg[ 9];   
     assign select_r1_cfg   = select_reg[10];
-    assign select_r2_cfg    = select_reg[11];
-    assign select_r3_cfg    = select_reg[12];
+    assign select_r2_cfg   = select_reg[11];
+    assign select_r3_cfg   = select_reg[12];
     assign select_input    = select_reg[13];
     assign select_output   = select_reg[14];   
     
@@ -112,21 +112,21 @@ module registers(
     //  WRITE                                 
     //  ------------------------------------------------------ 
        
-    assign write_pb_lut0  = select_pb_lut0  & write_en;
-    assign write_pb_lut1  = select_pb_lut1  & write_en;
-    assign write_pb_lut2  = select_pb_lut2  & write_en;   
+    assign write_pb_lut0 = select_pb_lut0 & write_en;
+    assign write_pb_lut1 = select_pb_lut1 & write_en;
+    assign write_pb_lut2 = select_pb_lut2 & write_en;   
     assign write_pb_lut3 = select_pb_lut3 & write_en;  
-    assign write_pb_lut4  = select_pb_lut4  & write_en;  
-    assign write_pb_lut5  = select_pb_lut5  & write_en;  
-    assign write_pb_lut6   = select_pb_lut6   & write_en;  
-    assign write_pb_lut7   = select_pb_lut7   & write_en;  
-    assign write_pb_lut8  = select_pb_lut8  & write_en;  
+    assign write_pb_lut4 = select_pb_lut4 & write_en;  
+    assign write_pb_lut5 = select_pb_lut5 & write_en;  
+    assign write_pb_lut6 = select_pb_lut6 & write_en;  
+    assign write_pb_lut7 = select_pb_lut7 & write_en;  
+    assign write_pb_lut8 = select_pb_lut8 & write_en;  
     assign write_pb_lut9 = select_pb_lut9 & write_en;  
-    assign write_r1_cfg = select_r1_cfg & write_en; 
+    assign write_r1_cfg  = select_r1_cfg  & write_en; 
     assign write_r2_cfg  = select_r2_cfg  & write_en;  
     assign write_r3_cfg  = select_r3_cfg  & write_en;  
-    assign write_input  = select_input  & write_en;  
-    assign write_output = select_output & write_en;  
+    assign write_input   = select_input   & write_en;  
+    assign write_output  = select_output  & write_en;  
 
     always_ff@(posedge clk)
         if (reset)                pb_lut0_reg <= `NO_OF_BITS'd0;
@@ -134,11 +134,11 @@ module registers(
 
     always_ff@(posedge clk)
         if (reset)              pb_lut1_reg <= `NO_OF_BITS'd1;
-        else if (write_pb_lut1)  pb_lut1_reg <= {7'b0, data_in[4:0]};
+        else if (write_pb_lut1) pb_lut1_reg <= {7'b0, data_in[4:0]};
 
     always_ff@(posedge clk)
         if (reset)              pb_lut2_reg <= `NO_OF_BITS'd2;
-        else if (write_pb_lut2)  pb_lut2_reg <= {8'b0, data_in[4:0]};
+        else if (write_pb_lut2) pb_lut2_reg <= {8'b0, data_in[4:0]};
         
     always_ff@(posedge clk)
         if (reset)              pb_lut3_reg <= `NO_OF_BITS'd3;
@@ -146,23 +146,23 @@ module registers(
         
     always_ff@(posedge clk)
         if (reset)              pb_lut4_reg <= `NO_OF_BITS'd4;
-        else if (write_pb_lut4)  pb_lut4_reg <= {8'b0, data_in[4:0]};
+        else if (write_pb_lut4) pb_lut4_reg <= {8'b0, data_in[4:0]};
            
     always_ff@(posedge clk)
         if (reset)              pb_lut5_reg <= `NO_OF_BITS'd5;
-        else if (write_pb_lut5)  pb_lut5_reg <=  {8'b0, data_in[4:0]};
+        else if (write_pb_lut5) pb_lut5_reg <=  {8'b0, data_in[4:0]};
     
     always_ff@(posedge clk)
         if (reset)              pb_lut6_reg  <= `NO_OF_BITS'd6;
-        else if (write_pb_lut6)   pb_lut6_reg  <=  {8'b0, data_in[4:0]};
+        else if (write_pb_lut6) pb_lut6_reg  <=  {8'b0, data_in[4:0]};
         
     always_ff@(posedge clk)
         if (reset)              pb_lut7_reg  <= `NO_OF_BITS'd7;
-        else if (write_pb_lut7)   pb_lut7_reg  <=  {8'b0, data_in[4:0]};
+        else if (write_pb_lut7) pb_lut7_reg  <=  {8'b0, data_in[4:0]};
         
     always_ff@(posedge clk)
         if (reset)              pb_lut8_reg <= `NO_OF_BITS'd8;
-        else                    pb_lut8_reg <=  {8'b0, data_in[4:0]};
+        else if (write_pb_lut8) pb_lut8_reg <=  {8'b0, data_in[4:0]};
     
     always_ff@(posedge clk)
         if (reset)              pb_lut9_reg <= `NO_OF_BITS'd9;
@@ -182,11 +182,11 @@ module registers(
         
     always_ff@(posedge clk)
         if (reset)              char_input_reg  <= `NO_OF_BITS'b0;
-        else if (write_input)  char_input_reg  <= {7'b0, data_in[4:0]};
+        else if (write_input)   char_input_reg  <= {7'b0, data_in[4:0]};
         
     always_ff@(posedge clk)
-        if (reset)                 char_output_reg <= `NO_OF_BITS'b0;
-        else                       char_output_reg <= {'0, char_out};
+        if (reset)              char_output_reg <= `NO_OF_BITS'b0;
+        else                    char_output_reg <= {'0, char_out};
         
       
     //  ------------------------------------------------------

@@ -7,7 +7,16 @@ module top(
     output        uart_txd,
     input  [14:0] key,              // switches
     input         direct_remote_sw, // switch
-    input         load_key_cfg_btn  // button
+    input         load_key_cfg_btn,  // button
+    output [7:0]  AN, 
+    output        CA, 
+    output        CB, 
+    output        CC, 
+    output        CD, 
+    output        CE, 
+    output        CF, 
+    output        CG, 
+    output        DP
 );
 
 debouncer debouncer_reset
@@ -49,6 +58,21 @@ debouncer debouncer_load_key_cfg
 top_fsm fsm
 (    .reset_n(~reset),
      .*
+);
+
+seven_segment_wrapper ssw (
+   .clk  ,
+   .reset,
+   .bin({'0, key}),
+   .AN, 
+   .CA, 
+   .CB, 
+   .CC, 
+   .CD, 
+   .CE, 
+   .CF, 
+   .CG, 
+   .DP 
 );
 
 registers regs (    
