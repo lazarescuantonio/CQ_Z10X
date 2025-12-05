@@ -2,12 +2,26 @@
 
 module top(
     input         clk,
-    input         reset,
+    input         reset_btn,
     input         uart_rxd,
     output        uart_txd,
     input  [14:0] key,              // switches
     input         direct_remote_sw, // switch
-    input         load_key_cfg      // button
+    input         load_key_cfg_btn  // button
+);
+
+debouncer debouncer_reset
+(
+   .clk    (clk),
+   .i_async(reset_btn),
+   .o_sync (reset)
+);
+
+debouncer debouncer_load_key_cfg
+(
+   .clk    (clk),
+   .i_async(load_key_cfg_btn),
+   .o_sync (load_key_cfg)
 );
 
     logic [11:0]  data_out;
