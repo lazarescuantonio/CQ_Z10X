@@ -8,14 +8,15 @@ module rotor(
     input             notch_in,     // semnal notch de la rotorul anterior
     input             new_char,     // o noua tasta a fost apasata
     input             load_key,     // incarca valoarea de start (comanda data de user)
-    input       [4:0] char_in_fwd,  // litera de intrare 0-25
-    input       [4:0] char_in_rev,  // litera de intrare 0-25
+    input       [4:0] char_in_fwd,  // litera de intrare 0-25 fwd
+    input       [4:0] char_in_rev,  // litera de intrare 0-25 rev
     input       [4:0] key,          // pozitia initiala a rotorului
     output      [4:0] char_out_fwd, // iesire catre urmatorul rotor/reflector
     output      [4:0] char_out_rev, // iesire reverse
     output            notch_out     // semnal notch pentru urmatorul rotor
 );
-    logic [4:0] crt_pos;            // pozitia curennta al rotorulul
+
+    logic [4:0] crt_pos;
     logic [4:0] idx_in_fwd;
     logic [4:0] idx_out_fwd;
     logic [4:0] idx_in_rev;
