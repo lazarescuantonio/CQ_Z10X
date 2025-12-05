@@ -2,7 +2,7 @@
 
 module top(
     input         clk,
-    input         reset_n,
+    input         reset,
     input         uart_rxd,
     output        uart_txd,
     input  [14:0] key,              // switches
@@ -32,7 +32,10 @@ module top(
     logic [11:0]  char_input_reg;
     logic         new_char_pulse;
 
-top_fsm fsm (.*);
+top_fsm fsm
+(    .reset_n(~reset),
+     .*
+);
 
 registers regs (    
     .pb_lut0_reg,     
@@ -50,10 +53,11 @@ registers regs (
     .r2_cfg_reg,      
     .r3_cfg_reg,      
     .char_input_reg,
-    .reset(~reset_n),
+    .reset(reset),
     .*);
 
-enigma(
+enigma
+(
    .char_in(char_input_reg[4:0]),
    .key,
    .load_key_cfg,
@@ -71,12 +75,13 @@ enigma(
    .pb_lut6_reg,     
    .pb_lut7_reg,     
    .pb_lut8_reg,
+   .reset_n(~reset),
    .*
    );
    
 always_ff @(posedge clk)
-   if (~reset_n) char_input_reg_ff <= 0;
-   else          char_input_reg_ff <= char_input_reg;
+   if (reset) char_input_reg_ff <= 0;
+   else       char_input_reg_ff <= char_input_reg;
 
 assign new_char_pulse = char_input_reg ^ char_input_reg_ff; // only one pulse
    

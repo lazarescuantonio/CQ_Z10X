@@ -35,16 +35,16 @@ module plugboard(
    
    always_comb begin
       case(char_in_rev)
-        0: char_out_fw = pb_lut0_reg; // A
-        1: char_out_fw = pb_lut1_reg; // B
-        2: char_out_fw = pb_lut2_reg; // C
-        3: char_out_fw = pb_lut3_reg; // D
-        4: char_out_fw = pb_lut4_reg; // E
-        5: char_out_fw = pb_lut5_reg; // F
-        6: char_out_fw = pb_lut6_reg; // G
-        7: char_out_fw = pb_lut7_reg; // H
-        8: char_out_fw = pb_lut8_reg; // I
-        9: char_out_fw = pb_lut9_reg; // J
+        0: char_out_rev = pb_lut0_reg; // A
+        1: char_out_rev = pb_lut1_reg; // B
+        2: char_out_rev = pb_lut2_reg; // C
+        3: char_out_rev = pb_lut3_reg; // D
+        4: char_out_rev = pb_lut4_reg; // E
+        5: char_out_rev = pb_lut5_reg; // F
+        6: char_out_rev = pb_lut6_reg; // G
+        7: char_out_rev = pb_lut7_reg; // H
+        8: char_out_rev = pb_lut8_reg; // I
+        9: char_out_rev = pb_lut9_reg; // J
         default: char_out_rev = char_in_rev; // restul raman la fel...
       endcase
    end
