@@ -18,10 +18,10 @@ logic      [25:0][4:0] ROTOR_A_MAP;
 logic      [25:0][4:0] ROTOR_B_MAP;
 logic      [25:0][4:0] ROTOR_C_MAP;
 logic [2:0][25:0][4:0] ROTORS_MAP;
-logic                  ROTOR_A_NOTCH;
-logic                  ROTOR_B_NOTCH;
-logic                  ROTOR_C_NOTCH;
-logic            [2:0] ROTORS_NOTCH;
+logic            [4:0] ROTOR_A_NOTCH;
+logic            [4:0] ROTOR_B_NOTCH;
+logic            [4:0] ROTOR_C_NOTCH;
+logic       [2:0][4:0] ROTORS_NOTCH;
 logic                  rA_notch_out;
 logic                  rB_notch_out;
 
@@ -35,28 +35,31 @@ logic [4:0] pbg_char_out_fwd;
 logic [4:0] refl_char_out;
 
 localparam [25:0][4:0] ROTOR1_MAP = '{
-    5'd4,  5'd10, 5'd12, 5'd5,  5'd11, 5'd6,  5'd3,  5'd16, 5'd21, 5'd25,
-    5'd13, 5'd19, 5'd14, 5'd22, 5'd24, 5'd7,  5'd23, 5'd20, 5'd18, 5'd15,
-    5'd0,  5'd8,  5'd1,  5'd17, 5'd2,  5'd9
+    5'd9,  5'd2,  5'd17, 5'd1,  5'd8,  5'd0,  5'd15, 5'd18, 5'd20, 5'd23,
+    5'd7,  5'd24, 5'd22, 5'd14, 5'd19, 5'd13, 5'd25, 5'd21, 5'd16, 5'd3,
+    5'd6,  5'd11, 5'd5,  5'd12, 5'd10, 5'd4
 };
+
 localparam [4:0] ROTOR1_NOTCH = 5'd16; // Q
 
 localparam [25:0][4:0] ROTOR2_MAP = '{
-    5'd0,  5'd9,  5'd3,  5'd10, 5'd18, 5'd8,  5'd17, 5'd20, 5'd23, 5'd1,
-    5'd11, 5'd7,  5'd22, 5'd19, 5'd12, 5'd2,  5'd16, 5'd6,  5'd25, 5'd13,
-    5'd15, 5'd24, 5'd5,  5'd21, 5'd14, 5'd4
+    5'd4,  5'd14, 5'd21, 5'd5,  5'd24, 5'd15, 5'd13, 5'd25, 5'd6,  5'd16,
+    5'd2,  5'd12, 5'd19, 5'd22, 5'd7,  5'd11, 5'd1,  5'd23, 5'd20, 5'd17,
+    5'd8,  5'd18, 5'd10, 5'd3,  5'd9,  5'd0
 };
+
 localparam [4:0] ROTOR2_NOTCH = 5'd4; // E
 
 localparam [25:0][4:0] ROTOR3_MAP = '{
-    5'd1,  5'd3,  5'd5,  5'd7,  5'd9,  5'd11, 5'd2,  5'd15, 5'd17, 5'd19,
-    5'd23, 5'd21, 5'd25, 5'd13, 5'd24, 5'd4,  5'd8,  5'd22, 5'd6,  5'd0,
-    5'd10, 5'd12, 5'd20, 5'd18, 5'd16, 5'd14
+    5'd14, 5'd16, 5'd18, 5'd20, 5'd12, 5'd10, 5'd0,  5'd6,  5'd22, 5'd8,
+    5'd4,  5'd24, 5'd13, 5'd25, 5'd21, 5'd23, 5'd19, 5'd17, 5'd15, 5'd2,
+    5'd11, 5'd9,  5'd7,  5'd5,  5'd3,  5'd1
 };
+
 localparam [4:0] ROTOR3_NOTCH = 5'd21; // V
 
 // ROTORS VALUES SELECTION
-assign ROTORS_MAP = {ROTOR3_MAP, ROTOR2_NOTCH, ROTOR1_NOTCH};
+assign ROTORS_MAP = {ROTOR3_MAP, ROTOR2_MAP, ROTOR1_MAP};
 assign ROTOR_A_MAP = ROTORS_MAP[rA_cfg];
 assign ROTOR_B_MAP = ROTORS_MAP[rB_cfg];
 assign ROTOR_C_MAP = ROTORS_MAP[rC_cfg];
