@@ -10,8 +10,19 @@ module enigma(
    input  [1:0] rC_cfg,
    input        load_key_cfg,
    input        new_char_pulse,
-   output [4:0] char_out
-   
+   output [4:0] char_out,
+
+   input  [4:0] pb_lut0_reg,
+   input  [4:0] pb_lut1_reg,
+   input  [4:0] pb_lut2_reg,
+   input  [4:0] pb_lut3_reg,
+   input  [4:0] pb_lut4_reg,
+   input  [4:0] pb_lut5_reg,
+   input  [4:0] pb_lut6_reg,
+   input  [4:0] pb_lut7_reg,
+   input  [4:0] pb_lut8_reg,
+   input  [4:0] pb_lut9_reg
+
     );
 
 logic      [25:0][4:0] ROTOR_A_MAP;
@@ -75,7 +86,17 @@ plugboard pbg(
     .char_in_fw(char_in),
     .char_out_fw(pbg_char_out_fwd),
     .char_in_rev(rA_char_out_rev),
-    .char_out_rev(char_out)
+    .char_out_rev(char_out),
+    .pb_lut0_reg(pb_lut0_reg),
+    .pb_lut1_reg(pb_lut1_reg),
+    .pb_lut2_reg(pb_lut2_reg),
+    .pb_lut3_reg(pb_lut3_reg),
+    .pb_lut4_reg(pb_lut4_reg),
+    .pb_lut5_reg(pb_lut5_reg),
+    .pb_lut6_reg(pb_lut6_reg),
+    .pb_lut7_reg(pb_lut7_reg),
+    .pb_lut8_reg(pb_lut8_reg),
+    .pb_lut9_reg(pb_lut9_reg)
     );
 
 rotor rA ( // right
