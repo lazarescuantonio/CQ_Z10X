@@ -102,7 +102,7 @@ plugboard pbg(
 rotor rA ( // right
     .MAP_FWD(ROTOR_A_MAP),
     .NOTCH(ROTOR_A_NOTCH),
-    .notch_in(1'b0),   // semnal notch de la rotorul anterior
+    .notch_in(1'b1),   // semnal notch de la rotorul anterior
     .new_char(new_char_pulse),     // o noua tasta a fost apasata
     .load_key(load_key_cfg),     // incarca valoarea de start (comanda data de user)
     .char_in_fwd(pbg_char_out_fwd),      // litera de intrare 0-25
@@ -119,7 +119,7 @@ rotor rB ( // middle
     .MAP_FWD(ROTOR_B_MAP),
     .NOTCH(ROTOR_B_NOTCH),
     .notch_in(rA_notch_out),   // semnal notch de la rotorul anterior
-    .new_char(1'b0),     // o noua tasta a fost apasata
+    .new_char(new_char_pulse),     // o noua tasta a fost apasata
     .load_key(load_key_cfg),     // incarca valoarea de start (comanda data de user)
     .char_in_fwd(rA_char_out_fwd),      // litera de intrare 0-25
     .char_in_rev(rC_char_out_rev),  // litera de intrare 0-25
@@ -134,7 +134,7 @@ rotor rC ( // left
     .MAP_FWD(ROTOR_C_MAP),
     .NOTCH(ROTOR_C_NOTCH),
     .notch_in(rB_notch_out),   // semnal notch de la rotorul anterior
-    .new_char(1'b0),     // o noua tasta a fost apasata
+    .new_char(new_char_pulse),     // o noua tasta a fost apasata
     .load_key(load_key_cfg),     // incarca valoarea de start (comanda data de user)
     .char_in_fwd(rB_char_out_fwd),      // litera de intrare 0-25
     .char_in_rev(refl_char_out),  // litera de intrare 0-25

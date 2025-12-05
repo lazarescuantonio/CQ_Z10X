@@ -30,7 +30,7 @@ module rotor(
             crt_pos <= '0;
         else if (load_key)
             crt_pos <= key;
-        else if (notch_in || new_char)
+        else if (notch_in & new_char)
             crt_pos <= (crt_pos + 1) % 26;
     
     // Forward
